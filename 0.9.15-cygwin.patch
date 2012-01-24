@@ -1,0 +1,21 @@
+--- origsrc/OpenGTL-0.9.15.1/OpenGTL/GTLCore/MemoryManager_p.cpp	2011-04-10 04:03:22.000000000 -0500
++++ src/OpenGTL-0.9.15.1/OpenGTL/GTLCore/MemoryManager_p.cpp	2011-12-27 01:46:49.029488500 -0600
+@@ -227,11 +227,18 @@ MemoryManager::Private* MemoryManager::P
+ #endif
+ }
+ 
++#if defined (__CYGWIN__)
++extern "C" unsigned long pthread_getsequence_np(pthread_t *);
++#endif
++
+ int MemoryManager::Private::Instances::getThreadId()
+ {
+ #if defined(_WIN32)
+   // It looks like thread id's are always multiples of 4, so...
+   return GetCurrentThreadId() >> 2;
++#elif defined (__CYGWIN__)
++  pthread_t self = pthread_self();
++  return (int) pthread_getsequence_np(&self);
+ #elif defined(__BEOS__)
+   return find_thread(0);
+ #elif defined(__linux) || defined(PTHREAD_KEYS_MAX)

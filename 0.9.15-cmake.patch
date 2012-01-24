@@ -1,0 +1,22 @@
+--- origsrc/OpenGTL-0.9.15.1/Extensions/PngDC/CMakeLists.txt	2011-04-10 04:03:22.000000000 -0500
++++ src/OpenGTL-0.9.15.1/Extensions/PngDC/CMakeLists.txt	2011-12-27 03:20:08.398754100 -0600
+@@ -5,7 +5,7 @@ add_definitions( ${OPENGTL_BUILD_DEFINIT
+ set(PNG_DC_SRCS
+     PngDC.cpp )
+ 
+-add_library(PngDC SHARED ${PNG_DC_SRCS} )
++add_library(PngDC MODULE ${PNG_DC_SRCS} )
+ target_link_libraries(PngDC GTLImageIO ${PNG_LIBRARIES})
+ 
+ # __STDC_LIMIT_MACROS is needed by LLVM's DataTypes.h
+--- origsrc/OpenGTL-0.9.15.1/Extensions/RawDC/CMakeLists.txt	2011-04-10 04:03:22.000000000 -0500
++++ src/OpenGTL-0.9.15.1/Extensions/RawDC/CMakeLists.txt	2011-12-27 03:20:19.201372000 -0600
+@@ -9,7 +9,7 @@ SET(libraw_LIB_SRCS ${CMAKE_CURRENT_SOUR
+ set( RAW_DC_SRCS
+      RawDC.cpp )
+ 
+-add_library( RawDC SHARED ${RAW_DC_SRCS} ${libraw_LIB_SRCS} )
++add_library( RawDC MODULE ${RAW_DC_SRCS} ${libraw_LIB_SRCS} )
+ target_link_libraries( RawDC GTLImageIO )
+ 
+ # __STDC_LIMIT_MACROS is needed by LLVM's DataTypes.h

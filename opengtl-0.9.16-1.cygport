@@ -1,0 +1,26 @@
+inherit cmake
+
+
+HOMEPAGE="http://www.opengtl.org/"
+SRC_URI="http://download.opengtl.org/OpenGTL-${PV}.tar.bz2"
+SRC_DIR="OpenGTL-${PV}"
+
+PATCH_URI="0.9.15-cmake.patch
+	   0.9.15-cygwin.patch"
+
+PKG_NAMES="${PN} libOpenGTL0.8 libOpenGTL-common libOpenGTL-devel"
+opengtl_CONTENTS="usr/bin/*.exe"
+libOpenGTL0_8_CONTENTS="usr/bin/*-0.8.dll usr/lib/GTLImageIO/"
+libOpenGTL_common_CONTENTS="usr/share/doc/ usr/share/OpenGTL/"
+libOpenGTL_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
+
+CYGCMAKE_ARGS="-DOPENGTL_BUILD_TESTS=YES -D__GTL_HAVE_GCC_VISIBILITY=NO"
+
+src_test() {
+	cd ${B}
+	export PATH="${B}/OpenCTL/OpenCTL:${B}/OpenGTL/GTLCore:${B}/OpenGTL/GTLFragment:${B}/OpenGTL/GTLImageIO:${B}/OpenGTL/GTLTest:${B}/OpenShiva/OpenShiva:${PATH}"
+	for x in $(find . -name '*.exe' | grep '/tests/')
+	do
+		$x
+	done
+}
