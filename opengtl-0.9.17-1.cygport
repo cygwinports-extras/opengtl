@@ -14,7 +14,11 @@ libOpenGTL0_8_CONTENTS="usr/bin/*-0.8.dll usr/lib/GTLImageIO/"
 libOpenGTL_common_CONTENTS="usr/share/doc/ usr/share/OpenGTL/"
 libOpenGTL_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
 
-CYGCMAKE_ARGS="-DOPENGTL_BUILD_TESTS=YES -D__GTL_HAVE_GCC_VISIBILITY=NO"
+CYGCMAKE_ARGS="
+	-DOPENGTL_BUILD_OPENRIJN=YES
+	-DOPENGTL_BUILD_TESTS=YES
+	-D__GTL_HAVE_GCC_VISIBILITY=NO
+"
 
 src_test() {
 	cd ${B}

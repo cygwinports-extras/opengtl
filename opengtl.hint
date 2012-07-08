@@ -1,5 +1,5 @@
 category: Graphics
-requires: libgcc1 libllvm3.0 libOpenGTL0.8 libstdc++6
+requires: libgcc1 libllvm3.1 libOpenGTL0.8 libstdc++6
 external-source: opengtl
 sdesc: "Graphics Transformation Languages interpreters"
 ldesc: "The Graphics Transformation Languages is a set of library for 
