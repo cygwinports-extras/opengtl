@@ -1,6 +1,14 @@
 inherit cmake
 
-
+NAME="opengtl"
+VERSION=0.9.17
+RELEASE=2
+CATEGORY="Graphics"
+SUMMARY="Graphics Transformation Languages libraries"
+DESCRIPTION="The Graphics Transformation Languages is a set of library for
+using and integrating transformation algorithms (such as filter or color
+conversion) in graphics applications. The goal is to provide the tools,
+languages and libraries to create generic transformation for graphics."
 HOMEPAGE="http://www.opengtl.org/"
 SRC_URI="http://download.opengtl.org/OpenGTL-${PV}.tar.bz2"
 SRC_DIR="OpenGTL-${PV}"
@@ -9,9 +17,14 @@ PATCH_URI="0.9.15-cmake.patch
 	   0.9.15-cygwin.patch"
 
 PKG_NAMES="${PN} libOpenGTL0.8 libOpenGTL-common libOpenGTL-devel"
+opengtl_SUMMARY="${SUMMARY% *} interpreters"
 opengtl_CONTENTS="usr/bin/*.exe"
+libOpenGTL0_8_SUMMARY="${SUMMARY} (runtime)"
+libOpenGTL0_8_REQUIRES="libOpenGTL-common"
 libOpenGTL0_8_CONTENTS="usr/bin/*-0.8.dll usr/lib/GTLImageIO/"
+libOpenGTL_common_SUMMARY="${SUMMARY} (data)"
 libOpenGTL_common_CONTENTS="usr/share/doc/ usr/share/OpenGTL/"
+libOpenGTL_devel_SUMMARY="${SUMMARY} (development)"
 libOpenGTL_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
 
 CYGCMAKE_ARGS="

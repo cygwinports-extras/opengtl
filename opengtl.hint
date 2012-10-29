@@ -1,8 +1,0 @@
-category: Graphics
-requires: libgcc1 libllvm3.1 libOpenGTL0.8 libstdc++6
-external-source: opengtl
-sdesc: "Graphics Transformation Languages interpreters"
-ldesc: "The Graphics Transformation Languages is a set of library for 
-using and integrating transformation algorithms (such as filter or color 
-conversion) in graphics applications. The goal is to provide the tools, 
-languages and libraries to create generic transformation for graphics."
